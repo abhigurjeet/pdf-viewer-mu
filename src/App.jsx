@@ -1,21 +1,20 @@
-import { initMuPDFWebViewer } from 'mupdf-webviewer'
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import UploadPdf from "./Upload";
+import ViewPdf from "./ViewPdf";
+import ViewPdfRaw from "./ViewPdfRaw";
 
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<UploadPdf />} />
+        <Route path="/view" element={<ViewPdf />} />
+        <Route path='/view-raw' element={<ViewPdfRaw/>}/>
 
-const App=()=>{
-  // useEffect(()=>{
-  //   initMuPDFWebViewer('#viewer', 'sample.pdf', {
-  //     libraryPath: '../public/lib',
-  //     licenseKey: 'YOUR_LICENSE_KEY',
-  //   })
-  //     .then(mupdf => {
-  //       /* API */
-  //       mupdf.toast.show({ type: 'success', content: 'Opened' });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // },[]);
-  return <>Hello</>;
-}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
+  );
+};
+
 export default App;
