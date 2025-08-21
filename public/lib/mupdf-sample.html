@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MuPDF WebViewer Sample</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    #viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+  </style>
+</head>
+<script src="/streamdocs/mupdf.js"></script>
+<body>
+  <iframe id="viewer" src="/streamdocs/view/sd"></iframe>
+</body>
+<script>
+  const viewerElement = document.getElementById('viewer');
+  const mupdf = new StreamDocs({ element: viewerElement });
+
+  const fileURI = new URLSearchParams(location.search).get('file-uri');
+  if (fileURI?.length > 0) {
+    mupdf.document.open({
+      url: fileURI,
+    })
+  }
+</script>
+</html>

@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "NotoSans-Bold";
+  src: url("Inter-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NotoSans-Medium";
+  src: url("Inter-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NotoSans-Regular";
+  src: url("Inter-Regular.woff2") format("woff2");
+}
