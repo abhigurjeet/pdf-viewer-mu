@@ -29,9 +29,13 @@ const ViewPdf = () => {
       const blob = new Blob([typedArray], { type: "application/pdf" });
       const blobUrl = URL.createObjectURL(blob);
   
-      initMuPDFWebViewer("#viewer", blobUrl, {
+      const mupdf = await initMuPDFWebViewer("#viewer", blobUrl, {
         libraryPath: "/lib",
         licenseKey:import.meta.env.VITE_MU_ACCESS_KEY_ID      
+      });
+      mupdf.viewer.setViewVisibility({
+        view: mupdf.refs.visibility.view.TOOLBAR_DOWNLOAD,
+        visibility: false,
       });
     };
   
