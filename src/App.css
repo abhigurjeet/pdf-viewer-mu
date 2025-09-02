@@ -71,3 +71,128 @@
   background-color: #dc3545;
   color: white;
 }
+.book-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  width: 250px;
+  margin: 16px;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.reader-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #e0e0e0;
+  color: #333;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.book-image-wrapper {
+  height: 224px;
+  width: 100%;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.book-image {
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.book-info .book-title {
+  color: #0a0a4d;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.book-info .book-authors {
+  font-size: 14px;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8px;
+}
+
+.book-rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #ffbf00;
+}
+
+.rating-value {
+  margin-left: 4px;
+  color: #333;
+}
+/* Header styles */
+.header {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Logo image */
+.logo {
+  height: 30px;
+  width: auto;
+}
+
+/* Site title */
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* View Books Button */
+.view-books-button {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.view-books-button:hover {
+  background-color: #dc2626;
+}
