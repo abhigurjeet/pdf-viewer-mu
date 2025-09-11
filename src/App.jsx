@@ -4,6 +4,7 @@ import ViewPdf from "./ViewPdf";
 import ViewPdfRaw from "./ViewPdfRaw";
 import AllBooks from "./AllBooks";
 import "./App.css"; // Import your raw CSS file
+import { EmbedPdf } from ".";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -32,9 +33,9 @@ const Header = () => {
 const App = () => {
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<AllBooks />} />
+        <Route path="/" element={<EmbedPdf />} />
         <Route path="/view" element={<ViewPdf />} />
         <Route path="/view-raw" element={<ViewPdfRaw />} />
         <Route path="/upload" element={<UploadPdf />} />

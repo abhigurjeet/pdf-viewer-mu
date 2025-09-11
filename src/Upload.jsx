@@ -94,9 +94,9 @@ export default function UploadPdf() {
               <button onClick={() => handleView(doc.Key)} className="view-button">
                 View
               </button>
-              <button onClick={() => handleViewRaw(doc.Key)} className="view-raw-button">
+              {/* <button onClick={() => handleViewRaw(doc.Key)} className="view-raw-button">
                 View Raw
-              </button>
+              </button> */}
             </div>
           </li>
         ))}
