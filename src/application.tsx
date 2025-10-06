@@ -1,69 +1,96 @@
-import { createPluginRegistration } from '@embedpdf/core';
-import { EmbedPDF } from '@embedpdf/core/react';
-import { usePdfiumEngine } from '@embedpdf/engines/react';
-import { ConsoleLogger } from '@embedpdf/models';
-import { Viewport, ViewportPluginPackage } from '@embedpdf/plugin-viewport/react';
-import { Scroller, ScrollPluginPackage, ScrollStrategy } from '@embedpdf/plugin-scroll/react';
-import { LoaderPluginPackage } from '@embedpdf/plugin-loader/react';
-import { RenderLayer, RenderPluginPackage } from '@embedpdf/plugin-render/react';
-import { TilingLayer, TilingPluginPackage } from '@embedpdf/plugin-tiling/react';
-import { MarqueeZoom, ZoomMode, ZoomPluginPackage } from '@embedpdf/plugin-zoom/react';
-import { SearchLayer, SearchPluginPackage } from '@embedpdf/plugin-search/react';
+import { createPluginRegistration } from "@embedpdf/core";
+import { EmbedPDF } from "@embedpdf/core/react";
+import { usePdfiumEngine } from "@embedpdf/engines/react";
+import { ConsoleLogger } from "@embedpdf/models";
+import {
+  Viewport,
+  ViewportPluginPackage,
+} from "@embedpdf/plugin-viewport/react";
+import {
+  Scroller,
+  ScrollPluginPackage,
+  ScrollStrategy,
+} from "@embedpdf/plugin-scroll/react";
+import { LoaderPluginPackage } from "@embedpdf/plugin-loader/react";
+import {
+  RenderLayer,
+  RenderPluginPackage,
+} from "@embedpdf/plugin-render/react";
+import {
+  TilingLayer,
+  TilingPluginPackage,
+} from "@embedpdf/plugin-tiling/react";
+import {
+  MarqueeZoom,
+  ZoomMode,
+  ZoomPluginPackage,
+} from "@embedpdf/plugin-zoom/react";
+import {
+  SearchLayer,
+  SearchPluginPackage,
+} from "@embedpdf/plugin-search/react";
 import {
   GlobalPointerProvider,
   PagePointerProvider,
   InteractionManagerPluginPackage,
-} from '@embedpdf/plugin-interaction-manager/react';
-import { PanPluginPackage } from '@embedpdf/plugin-pan/react';
-import { Rotate, RotatePluginPackage } from '@embedpdf/plugin-rotate/react';
-import { SpreadPluginPackage } from '@embedpdf/plugin-spread/react';
-import { FullscreenPluginPackage } from '@embedpdf/plugin-fullscreen/react';
-import { ExportPluginPackage } from '@embedpdf/plugin-export/react';
-import { ThumbnailPluginPackage } from '@embedpdf/plugin-thumbnail/react';
-import { SelectionPluginPackage } from '@embedpdf/plugin-selection/react';
-import { SelectionLayer } from '@embedpdf/plugin-selection/react';
+} from "@embedpdf/plugin-interaction-manager/react";
+import { PanPluginPackage } from "@embedpdf/plugin-pan/react";
+import { Rotate, RotatePluginPackage } from "@embedpdf/plugin-rotate/react";
+import { SpreadPluginPackage } from "@embedpdf/plugin-spread/react";
+import { FullscreenPluginPackage } from "@embedpdf/plugin-fullscreen/react";
+import { ExportPluginPackage } from "@embedpdf/plugin-export/react";
+import { ThumbnailPluginPackage } from "@embedpdf/plugin-thumbnail/react";
+import { SelectionPluginPackage } from "@embedpdf/plugin-selection/react";
+import { SelectionLayer } from "@embedpdf/plugin-selection/react";
 
-import { CircularProgress, Box, Alert } from '@mui/material';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useEffect, useMemo, useState } from 'react';
+import { CircularProgress, Box, Alert } from "@mui/material";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { useEffect, useMemo, useState } from "react";
 
-import { PageControls } from './components/page-controls';
-import { Search } from './components/search';
-import { Drawer, DrawerComponent, DrawerProvider } from './components/drawer-system';
-import { Sidebar } from './components/sidebar';
-import { Toolbar } from './components/toolbar';
-import { ViewSidebarReverseIcon } from './icons';
-import { AnnotationLayer, AnnotationPluginPackage } from '@embedpdf/plugin-annotation/react';
+import { PageControls } from "./components/page-controls";
+import { Search } from "./components/search";
+import {
+  Drawer,
+  DrawerComponent,
+  DrawerProvider,
+} from "./components/drawer-system";
+import { Sidebar } from "./components/sidebar";
+import { Toolbar } from "./components/toolbar";
+import { ViewSidebarReverseIcon } from "./icons";
+import {
+  AnnotationLayer,
+  AnnotationPluginPackage,
+} from "@embedpdf/plugin-annotation/react";
 import samplePdf from "./assets/sample.pdf";
-
 
 const drawerComponents: DrawerComponent[] = [
   {
-    id: 'search',
+    id: "search",
     component: Search,
     icon: SearchOutlinedIcon,
-    label: 'Search',
-    position: 'right',
+    label: "Search",
+    position: "right",
   },
   {
-    id: 'sidebar',
+    id: "sidebar",
     component: Sidebar,
     icon: ViewSidebarReverseIcon,
-    label: 'Sidebar',
-    position: 'left',
+    label: "Sidebar",
+    position: "left",
   },
 ];
 
 const consoleLogger = new ConsoleLogger();
 
 function App() {
-  
   const isDev = useMemo(
-    () => new URLSearchParams(window.location.search).get('dev') === 'true',
+    () => new URLSearchParams(window.location.search).get("dev") === "true",
     [],
   );
 
-  const { engine, isLoading, error } = usePdfiumEngine(isDev ? { logger: consoleLogger } : {});
+  const { engine, isLoading, error } = usePdfiumEngine(
+    isDev ? { logger: consoleLogger } : {},
+  );
   const [arrayBuffer, setArrayBuffer] = useState<ArrayBuffer | null>(null);
 
   useEffect(() => {
@@ -79,11 +106,11 @@ function App() {
     return (
       <Box
         sx={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Alert severity="error">Failed to initialize PDF viewer:</Alert>
@@ -95,11 +122,11 @@ function App() {
     return (
       <Box
         sx={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <CircularProgress size={48} />
@@ -148,12 +175,12 @@ function App() {
         {({ pluginsReady }) => (
           <Box
             sx={{
-              height: '100%',
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              position: 'relative',
-              userSelect: 'none',
+              height: "100%",
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              position: "relative",
+              userSelect: "none",
             }}
           >
             <Toolbar />
@@ -165,7 +192,7 @@ function App() {
                 flexGrow: 1,
                 height: "calc(100vh - 48px)", // fill viewport minus navbar
                 overflow: "hidden", // prevent body scrollbars
-                marginTop: "48px",  // push below navbar
+                marginTop: "48px", // push below navbar
               }}
             >
               {/* Left Sidebar */}
@@ -174,31 +201,31 @@ function App() {
               {/* Main Viewport */}
               <Box
                 sx={{
-                  flex: '1 1 0', // grow / shrink, flex-basis 0
+                  flex: "1 1 0", // grow / shrink, flex-basis 0
                   minWidth: 0, // allow shrinking inside flex row
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "relative",
                 }}
               >
                 <GlobalPointerProvider>
                   <Viewport
                     style={{
-                      width: '100%',
-                      height: '100%',
+                      width: "100%",
+                      height: "100%",
                       flexGrow: 1,
-                      backgroundColor: '#f1f3f5',
-                      overflow: 'auto',
+                      backgroundColor: "#f1f3f5",
+                      overflow: "auto",
                     }}
                   >
                     {!pluginsReady && (
                       <Box
                         sx={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          height: '100%',
-                          width: '100%',
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          height: "100%",
+                          width: "100%",
                         }}
                       >
                         <CircularProgress size={48} />
@@ -206,28 +233,39 @@ function App() {
                     )}
                     {pluginsReady && (
                       <Scroller
-                        renderPage={({ document, width, height, pageIndex, scale, rotation }) => (
-                          <Rotate key={document?.id} pageSize={{ width, height }}>
+                        renderPage={({
+                          document,
+                          width,
+                          height,
+                          pageIndex,
+                          scale,
+                          rotation,
+                        }) => (
+                          <Rotate
+                            key={document?.id}
+                            pageSize={{ width, height }}
+                          >
                             <PagePointerProvider
                               pageIndex={pageIndex}
                               pageWidth={width}
                               pageHeight={height}
                               rotation={rotation}
                               scale={scale}
+                              id={`pdf-page-${pageIndex}`}
                             >
                               <RenderLayer
                                 pageIndex={pageIndex}
-                                style={{ pointerEvents: 'none' }}
+                                style={{ pointerEvents: "none" }}
                               />
                               <TilingLayer
                                 pageIndex={pageIndex}
                                 scale={scale}
-                                style={{ pointerEvents: 'none' }}
+                                style={{ pointerEvents: "none" }}
                               />
                               <SearchLayer
                                 pageIndex={pageIndex}
                                 scale={scale}
-                                style={{ pointerEvents: 'none' }}
+                                style={{ pointerEvents: "none" }}
                               />
                               <AnnotationLayer
                                 pageIndex={pageIndex}
@@ -236,8 +274,14 @@ function App() {
                                 pageHeight={height}
                                 rotation={rotation}
                               />
-                              <MarqueeZoom pageIndex={pageIndex} scale={scale} />
-                              <SelectionLayer pageIndex={pageIndex} scale={scale} />
+                              <MarqueeZoom
+                                pageIndex={pageIndex}
+                                scale={scale}
+                              />
+                              <SelectionLayer
+                                pageIndex={pageIndex}
+                                scale={scale}
+                              />
                             </PagePointerProvider>
                           </Rotate>
                         )}
