@@ -23,7 +23,10 @@ import { EmbedPdf } from ".";
     }
   }, INTERVAL_MS);
 })();
-
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && ['s','p','S','P'].includes(e.key)) e.preventDefault();
+});
 const Header = () => {
   const navigate = useNavigate();
   return (

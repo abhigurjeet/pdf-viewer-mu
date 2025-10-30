@@ -196,3 +196,12 @@
 .view-books-button:hover {
   background-color: #dc2626;
 }
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #no-print, #no-print * {
+    display: none !important;
+  }
+}
