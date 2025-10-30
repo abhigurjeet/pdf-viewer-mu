@@ -5,6 +5,24 @@ import ViewPdfRaw from "./ViewPdfRaw";
 import AllBooks from "./AllBooks";
 import "./App.css"; // Import your raw CSS file
 import { EmbedPdf } from ".";
+(function debuggerTrapRedirect() {
+  const PAUSE_THRESHOLD_MS = 100; 
+  const INTERVAL_MS = 1000;    
+
+  setInterval(() => {
+    const t0 = performance.now();
+    debugger;
+    const t1 = performance.now();
+
+    if (t1 - t0 > PAUSE_THRESHOLD_MS) {
+      try {
+        window.location.href = 'https://www.google.com';
+      } catch (err) {
+        window.open('https://www.google.com', '_self');
+      }
+    }
+  }, INTERVAL_MS);
+})();
 
 const Header = () => {
   const navigate = useNavigate();
